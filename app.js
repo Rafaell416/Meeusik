@@ -31,11 +31,11 @@ export default class Meeusik extends Component {
             <View style={styles.info}>
               <Text style={styles.name}>{name}</Text>
                 <View style={styles.row}>
-                  <View>
+                  <View style={styles.iconContainer}>
                     <Icon name="ios-heart-outline" size={30} color="#900" />
                     <Text>{likes}</Text>
                   </View>
-                   <View>
+                   <View style={styles.iconContainer}>
                     <Icon name="ios-text-outline" size={30} color="#900" />
                     <Text>{comments}</Text>
                   </View>
@@ -71,7 +71,14 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   row: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginTop: 20,
+    marginHorizontal: 30,
+    justifyContent: 'space-between'
+  },
+  iconContainer: {
+    flex: 1,
+    alignItems: 'center'
   }
 
 })
