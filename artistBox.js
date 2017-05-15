@@ -48,7 +48,15 @@ const styles = StyleSheet.create({
   },
   artistBox:{
     backgroundColor: 'white',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    margin: 5,
+    shadowColor: 'black',
+    shadowOpacity: .5,
+    shadowOffset: {
+      height: 1,
+      width: -2,
+    },
+    elevation: 3
   },
   info:{
     flex: 1,
