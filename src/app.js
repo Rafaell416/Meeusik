@@ -11,32 +11,37 @@ import {
   Text,
   View,
   Image,
-  ScrollView
+  ListView
 } from 'react-native'
 
 import ArtistBox from './artistBox'
 
 export default class Meeusik extends Component {
 
-  render() {
+  constructor(props) {
+    super(props)
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
     const artist = {
-      image: require('./assets/skillet.png'),
+      image: require('../assets/skillet.png'),
       name: 'Skillet',
       comments: 10,
       likes: 200
     }
-
-    return (
-      <ScrollView style={styles.container}>
-      {
-        Array(500).fill(artist).map(artist => {
-          return  <ArtistBox artist={artist}/>
-        })
-      }
-      </ScrollView>
-    )
+    const artists =  Array(500).fill(artist) 
+    this.state = {
+      dataSource: ds.cloneWithRows(artists)
+    }
   }
+
+  render() {
+    return (
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={(artist) => <ArtistBox artist={artist} />}
+      />
+    )
+   }
 }
 
 const styles = StyleSheet.create({
