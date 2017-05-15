@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
   info:{
     flex: 1,
     alignItems: 'center',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    justifyContent: 'center'
   },
   name: {
     fontSize: 20,
