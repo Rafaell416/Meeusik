@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  ScrollView
 } from 'react-native'
 
 import ArtistBox from './artistBox'
@@ -27,15 +28,13 @@ export default class Meeusik extends Component {
     }
 
     return (
-      <View style={styles.container}>
-       <ArtistBox artist={artist}/>
-       <ArtistBox artist={artist}/>
-       <ArtistBox artist={artist}/>
-       <ArtistBox artist={artist}/>
-       <ArtistBox artist={artist}/>
-       <ArtistBox artist={artist}/>
-       <ArtistBox artist={artist}/>
-      </View>
+      <ScrollView style={styles.container}>
+      {
+        Array(500).fill(artist).map(artist => {
+          return  <ArtistBox artist={artist}/>
+        })
+      }
+      </ScrollView>
     )
   }
 }
