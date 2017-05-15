@@ -32,12 +32,12 @@ export default class Meeusik extends Component {
               <Text style={styles.name}>{name}</Text>
                 <View style={styles.row}>
                   <View style={styles.iconContainer}>
-                    <Icon name="ios-heart-outline" size={30} color="#900" />
-                    <Text>{likes}</Text>
+                    <Icon name="ios-heart-outline" size={30} color="gray" />
+                    <Text style={styles.count}>{likes}</Text>
                   </View>
                    <View style={styles.iconContainer}>
-                    <Icon name="ios-text-outline" size={30} color="#900" />
-                    <Text>{comments}</Text>
+                    <Icon name="ios-text-outline" size={30} color="gray" />
+                    <Text style={styles.count}>{comments}</Text>
                   </View>
                 </View>
             </View>
@@ -79,6 +79,9 @@ const styles = StyleSheet.create({
   iconContainer: {
     flex: 1,
     alignItems: 'center'
+  },
+  count: {
+    color: 'gray'
   }
 
 })
