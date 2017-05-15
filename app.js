@@ -18,9 +18,17 @@ import ArtistBox from './artistBox'
 export default class Meeusik extends Component {
 
   render() {
+
+    const artist = {
+      image: require('./assets/skillet.png'),
+      name: 'Skillet',
+      comments: 10,
+      likes: 200
+    }
+
     return (
       <View style={styles.container}>
-       <ArtistBox />
+       <ArtistBox artist={artist}/>
       </View>
     )
   }

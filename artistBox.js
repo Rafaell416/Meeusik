@@ -18,10 +18,7 @@ export default class ArtistBox extends Component {
 
   render() {
 
-    const image = require('./assets/skillet.png')
-    const name = 'Skillet'
-    const likes = 200
-    const comments = 10
+    const {image, name, likes, comments} = this.props.artist
 
     return (
         <View style={styles.artistBox}>
