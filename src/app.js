@@ -7,7 +7,8 @@
 import React, { Component } from 'react'
 import {
   StyleSheet,
-  AppRegistry
+  AppRegistry,
+  View
 } from 'react-native'
 
 import ArtistBox from './artistBox'
@@ -17,7 +18,9 @@ export default class Meeusik extends Component {
 
   render() {
     return (
-     <ArtistList />
+     <View style={styles.container}>
+      <ArtistList />
+     </View>
     )
    }
 }
