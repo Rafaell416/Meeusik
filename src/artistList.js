@@ -17,15 +17,8 @@ export default class ArtistList extends Component {
     super(props)
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
-    const artist = {
-      image: require('../assets/skillet.png'),
-      name: 'Skillet',
-      comments: 10,
-      likes: 200
-    }
-    const artists =  Array(500).fill(artist) 
     this.state = {
-      dataSource: ds.cloneWithRows(artists)
+      dataSource: ds.cloneWithRows(props.artists)
     }
   }
 

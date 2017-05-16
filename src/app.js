@@ -17,9 +17,18 @@ import ArtistList from './artistList'
 export default class Meeusik extends Component {
 
   render() {
+
+    const artist = {
+      image: require('../assets/skillet.png'),
+      name: 'Skillet',
+      comments: 10,
+      likes: 200
+    }
+    const artists =  Array(3).fill(artist) 
+
     return (
      <View style={styles.container}>
-      <ArtistList />
+      <ArtistList artists={artists}/>
      </View>
     )
    }
