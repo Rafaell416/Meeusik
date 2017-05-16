@@ -22,6 +22,14 @@ export default class ArtistList extends Component {
     }
   }
 
+  componentWillReceiveProps (newProps) {
+    if (newProps.artists !== this.props.artists) {
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(newProps.artists)
+      })
+    }
+  }
+
   render() {
     return (
       <ListView
