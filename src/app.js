@@ -20,6 +20,7 @@ export default class Meeusik extends Component {
 
   componentDidMount(){
     getArtists()
+      .then(data => console.warn('en app', data))
   }
 
   render() {

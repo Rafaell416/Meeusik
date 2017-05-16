@@ -4,10 +4,14 @@ const URL = 'https://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country
 function getArtists () {
 	return fetch(URL)
 		.then(res => res.json())
-		.then(data => {
-			console.warn('DATA => ', data)
-		})
+		.then(data => data.topartists.artist)
+		.then(artist => artist.map(artist => {
+			return {
+				name: artist.name,
+				image: artist.image[3]['#text']
+			}
+		}))
 		.catch(err => console.warn(err))
 }
 
-export  {getArtists}
+export  { getArtists }
