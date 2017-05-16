@@ -22,7 +22,7 @@ export default class ArtistBox extends Component {
 
     return (
         <View style={styles.artistBox}>
-          <Image style={styles.image} source={image}/>
+          <Image style={styles.image} />
             <View style={styles.info}>
               <Text style={styles.name}>{name}</Text>
                 <View style={styles.row}>

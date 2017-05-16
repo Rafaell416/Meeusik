@@ -8,7 +8,9 @@ function getArtists () {
 		.then(artist => artist.map(artist => {
 			return {
 				name: artist.name,
-				image: artist.image[3]['#text']
+				image: artist.image[3]['#text'],
+				likes: 200,
+				comments: 20
 			}
 		}))
 		.catch(err => console.warn(err))
