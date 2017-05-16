@@ -33,6 +33,7 @@ export default class ArtistList extends Component {
   render() {
     return (
       <ListView
+        enableEmptySections={true}
         dataSource={this.state.dataSource}
         renderRow={(artist) => <ArtistBox artist={artist} />}
       />
