@@ -6,40 +6,18 @@
 
 import React, { Component } from 'react'
 import {
-  AppRegistry,
   StyleSheet,
-  Text,
-  View,
-  Image,
-  ListView
+  AppRegistry
 } from 'react-native'
 
 import ArtistBox from './artistBox'
+import ArtistList from './artistList'
 
 export default class Meeusik extends Component {
 
-  constructor(props) {
-    super(props)
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-
-    const artist = {
-      image: require('../assets/skillet.png'),
-      name: 'Skillet',
-      comments: 10,
-      likes: 200
-    }
-    const artists =  Array(500).fill(artist) 
-    this.state = {
-      dataSource: ds.cloneWithRows(artists)
-    }
-  }
-
   render() {
     return (
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={(artist) => <ArtistBox artist={artist} />}
-      />
+     <ArtistList />
     )
    }
 }
