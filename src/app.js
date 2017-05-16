@@ -11,20 +11,25 @@ import {
   View
 } from 'react-native'
 
-import ArtistBox from './artistBox'
 import ArtistList from './artistList'
+import { getArtists } from './api-client'
+
+
 
 export default class Meeusik extends Component {
 
-  render() {
+  componentDidMount(){
+    getArtists()
+  }
 
+  render() {
     const artist = {
       image: require('../assets/skillet.png'),
       name: 'Skillet',
       comments: 10,
       likes: 200
     }
-    const artists =  Array(3).fill(artist) 
+    const artists =  Array(500).fill(artist) 
 
     return (
      <View style={styles.container}>
