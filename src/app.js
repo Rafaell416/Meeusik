@@ -7,12 +7,15 @@ import {
 
 import {Scene, Router} from 'react-native-router-flux'
 import homeView from './homeView'
+import artistDetail from './artistDetail'
+
 
 class Meeusik extends React.Component {
   render() {
     return <Router>
       <Scene key="root">
         <Scene key="home" component={homeView} hideNavBar={true}/>
+        <Scene key="artistDetail" component={artistDetail} />
       </Scene>
     </Router>
   }

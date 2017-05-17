@@ -5,28 +5,19 @@ import {
 } from 'react-native'
 
 
-import ArtistList from './artistList'
+import ArtistBox from './artistList'
 import { getArtists } from './api-client'
 
 
 
-export default class HomeView extends Component {
-
-  state = {
-    artists: []
-  }
-
-  componentDidMount(){
-    getArtists()
-      .then(data => this.setState({artists: data}))
-  }
+export default class ArtistDetail extends Component {
 
   render() {
-    const artists = this.state.artists
+    const artist = this.prop.artist
 
     return (
      <View style={styles.container}>
-      <ArtistList artists={artists}/>
+      <ArtistBox artist={artist}/>
      </View>
     )
    }

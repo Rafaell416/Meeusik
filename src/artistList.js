@@ -6,7 +6,9 @@
 
 import React, { Component } from 'react'
 import {
-  ListView
+  ListView,
+  TouchableOpacity,
+  StyleSheet,
 } from 'react-native'
 
 import ArtistBox from './artistBox'
@@ -43,10 +45,28 @@ export default class ArtistList extends Component {
       <ListView
         enableEmptySections={true}
         dataSource={this.state.dataSource}
-        renderRow={(artist) => <ArtistBox artist={artist} />}
+        renderRow={(artist) => {
+          return (
+            <TouchableOpacity>
+              <ArtistBox artist={artist} />
+            </TouchableOpacity>
+          )
+        }}
       />
     )
    }
 }
+
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'lightgray',
+    paddingTop: 20
+  }
+
+})
 
 
