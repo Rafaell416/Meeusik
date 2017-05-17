@@ -16,12 +16,12 @@ import { getArtists } from './api-client'
 class Meeusik extends React.Component {
   render() {
 
-    const isAdnroid = Platform.OS === 'android'
+    const isAndroid = Platform.OS === 'android'
 
     return <Router>
       <Scene key="root">
         <Scene key="home" component={HomeView} hideNavBar={true}/>
-        <Scene key="artistDetail" component={ArtistDetail} hideNavBar={isAdnroid}/>
+        <Scene key="artistDetail" component={ArtistDetail} hideNavBar={isAndroid}/>
       </Scene>
     </Router>
   }
