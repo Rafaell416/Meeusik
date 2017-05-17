@@ -19,7 +19,7 @@ export default class LoginView extends Component {
         <Text style={styles.welcome}>
           Bienvenido a Meeusik
         </Text>
-         <LoginButton
+         <LoginButton style={styles.fbButton}
           readPermissions={['public_profile', 'email']}
           onLoginFinished={
             (error, result) => {
@@ -46,6 +46,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'lightgray',
-    paddingTop: 50
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  welcome: {
+    fontSize: 24,
+    marginBottom: 10,
+    fontWeight: '600',
   }
 })
