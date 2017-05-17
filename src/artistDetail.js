@@ -13,7 +13,7 @@ import { getArtists } from './api-client'
 export default class ArtistDetail extends Component {
 
   render() {
-    const artist = this.prop.artist
+    const artist = this.props.artist
 
     return (
      <View style={styles.container}>
@@ -33,6 +33,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgray',
     paddingTop: 20
   }
-
 })
 

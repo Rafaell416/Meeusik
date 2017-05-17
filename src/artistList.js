@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react'
 import {
   ListView,
@@ -12,6 +6,8 @@ import {
 } from 'react-native'
 
 import ArtistBox from './artistBox'
+import { Actions } from 'react-native-router-flux'
+
 
 export default class ArtistList extends Component {
 
@@ -22,6 +18,8 @@ export default class ArtistList extends Component {
     this.state = {
       dataSource: ds
     }
+
+    this.handlePress = this.handlePress.bind(this)
   }
 
   componentDidMount () {
@@ -41,7 +39,7 @@ export default class ArtistList extends Component {
   }
 
   handlePress (artist) {
-    console.warn('artist', artist)
+    Actions.artistDetail({ artist })
   }
 
   render() {
@@ -70,7 +68,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgray',
     paddingTop: 20
   }
-
 })
 
 
