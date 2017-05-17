@@ -40,6 +40,10 @@ export default class ArtistList extends Component {
     })
   }
 
+  handlePress (artist) {
+    console.warn('artist', artist)
+  }
+
   render() {
     return (
       <ListView
@@ -47,7 +51,7 @@ export default class ArtistList extends Component {
         dataSource={this.state.dataSource}
         renderRow={(artist) => {
           return (
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> this.handlePress(artist)}>
               <ArtistBox artist={artist} />
             </TouchableOpacity>
           )
