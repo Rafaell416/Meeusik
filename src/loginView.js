@@ -19,6 +19,24 @@ export default class LoginView extends Component {
         <Text style={styles.welcome}>
           Bienvenido a Meeusik
         </Text>
+         <LoginButton
+          readPermissions={['public_profile', 'email']}
+          onLoginFinished={
+            (error, result) => {
+              if (error) {
+                console.error(error)
+              } else if (result.isCancelled) {
+                alert("login is cancelled.");
+              } else {
+                AccessToken.getCurrentAccessToken().then(
+                  (data) => {
+                    alert(data.accessToken.toString())
+                  }
+                )
+              }
+            }
+          }
+          onLogoutFinished={() => alert("logout.")}/>
       </View>
     )
   }
