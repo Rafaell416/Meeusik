@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import {
   StyleSheet,
-  View
+  View,
 } from 'react-native'
-
 
 import ArtistList from './artistList'
 import { getArtists } from './api-client'
@@ -16,32 +15,27 @@ export default class HomeView extends Component {
     artists: []
   }
 
-  componentDidMount(){
-    getArtists()
-      .then(data => this.setState({artists: data}))
+  componentDidMount () {
+      getArtists()
+        .then(data => this.setState({ artists: data }))
+        
   }
 
-  render() {
+  render () {
     const artists = this.state.artists
 
     return (
-     <View style={styles.container}>
-      <ArtistList artists={artists}/>
-     </View>
+      <View style={styles.container}>
+        <ArtistList artists={artists} />
+      </View>
     )
-   }
+  }
 }
-
-
-
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'lightgray',
-    paddingTop: 20
+    paddingTop: 50
   }
-
 })
-
