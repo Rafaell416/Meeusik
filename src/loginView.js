@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
-  Text
+  Text,
 } from 'react-native'
 
 import FBSDK, {
@@ -10,8 +10,42 @@ import FBSDK, {
   AccessToken
 } from 'react-native-fbsdk'
 
+import { Actions } from 'react-native-router-flux'
+import * as firebase from 'firebase'
+import config from '../config'
+
+
+firebase.initializeApp(config.firebaseConfig)
+
+const firebaseAuth = firebase.auth()
+
+
 
 export default class LoginView extends Component {
+
+  authenticateUser (accessToken) {
+    const credential = firebase.auth.FacebookAuthProvider.credential(accessToken) 
+    firebaseAuth.signInWithCredential(credential).then(function(user) {
+      console.log("Sign In Success", user)
+      let currentUser = user
+      // Merge prevUser and currentUser accounts and data
+      // ...
+    }, (error) => {
+      console.log("Sign In Error", error)
+    })
+  }
+
+  handleLoginFinished =  (error, result) => {
+    if (error) {
+        console.error(error)
+    } else if (result.isCancelled) {
+        alert("login is cancelled.")
+    } else {
+        AccessToken.getCurrentAccessToken().then(() => {
+          this.authenticateUser(data.accessToken)
+        })
+    }
+  }
 
   render () {
     return (
@@ -19,23 +53,9 @@ export default class LoginView extends Component {
         <Text style={styles.welcome}>
           Bienvenido a Meeusik
         </Text>
-         <LoginButton style={styles.fbButton}
+         <LoginButton
           readPermissions={['public_profile', 'email']}
-          onLoginFinished={
-            (error, result) => {
-              if (error) {
-                console.error(error)
-              } else if (result.isCancelled) {
-                alert("login is cancelled.");
-              } else {
-                AccessToken.getCurrentAccessToken().then(
-                  (data) => {
-                    alert(data.accessToken.toString())
-                  }
-                )
-              }
-            }
-          }
+          onLoginFinished={this.handleLoginFinished}
           onLogoutFinished={() => alert("logout.")}/>
       </View>
     )
