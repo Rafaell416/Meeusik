@@ -23,15 +23,23 @@ const firebaseAuth = firebase.auth()
 
 export default class LoginView extends Component {
 
-  authenticateUser (accessToken) {
-    const credential = firebase.auth.FacebookAuthProvider.credential(accessToken) 
-    firebaseAuth.signInWithCredential(credential).then((user) => {
-      console.log("Sign In Success", user)
-      let currentUser = user
-      // Merge prevUser and currentUser accounts and data
-      // ...
-    }, (error) => {
-      console.log("Sign In Error", error)
+  state = {
+    credentials: null
+  }
+
+  componentWillMount () {
+    this.authenticateUser()
+  }
+
+  authenticateUser = () => {
+    AccessToken.getCurrentAccessToken().then((data) => {
+      const { accessToken } = data
+      const credential = firebase.auth.FacebookAuthProvider.credential(accessToken) 
+        firebaseAuth.signInWithCredential(credential).then((credentials) => {
+          Actions.root()
+        }, (error) => {
+          console.log("Sign In Error", error)
+        })
     })
   }
 
@@ -41,11 +49,10 @@ export default class LoginView extends Component {
     } else if (result.isCancelled) {
         alert("login is cancelled.")
     } else {
-        AccessToken.getCurrentAccessToken().then((data) => {
-          this.authenticateUser(data.accessToken)
-        })
+       this.authenticateUser()
     }
   }
+
 
   render () {
     return (
