@@ -11,17 +11,11 @@ import FBSDK, {
 } from 'react-native-fbsdk'
 
 import { Actions } from 'react-native-router-flux'
-import config, {
-  firebaseDatabase, 
-  firebaseAuth
-}  from '../config'
-import * as firebase from 'firebase'
 
-
-
-firebase.initializeApp(config.firebaseConfig)
-
-
+import firebase, { 
+  firebaseAuth, 
+  firebaseDatabase
+ } from '../config'
 
 
 export default class LoginView extends Component {
