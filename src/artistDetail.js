@@ -10,13 +10,28 @@ import {
 import ArtistBox from './artistBox'
 import { getArtists } from './api-client'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { 
+  firebaseDatabase,
+  firebaseAuth 
+} from '../config'
+
 
 
 export default class ArtistDetail extends Component {
 
   handleSend = () => {
-    console.warn('Sent')
+    const { text } = this.state
+    const artistCommentsRef = this.getArtistCommentsRef()
+    let newCommentRef = artistCommentsRef.push()
+    newCommentRef.set({ text })
   }
+
+  getArtistCommentsRef = () => {
+    const {id} = this.props.artist
+    return firebaseDatabase.ref(`comments/ ${id}`)
+  }
+
+  handleChangeText = (text) => this.setState({text})
 
   render() {
     const artist = this.props.artist
@@ -28,7 +43,7 @@ export default class ArtistDetail extends Component {
           <TextInput
           style={styles.input}
           placeholder="Type here to comment!"
-          onChangeText={(text) => this.setState({text})}
+          onChangeText={this.handleChangeText}
           />
           <TouchableOpacity onPress={this.handleSend}>
             <Icon name="ios-send-outline" size={40} color="gray"/>
