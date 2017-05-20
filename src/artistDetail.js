@@ -31,7 +31,7 @@ export default class ArtistDetail extends Component {
           onChangeText={(text) => this.setState({text})}
           />
           <TouchableOpacity onPress={this.handleSend}>
-            <Icon name="ios-send-outline" size={50} color="gray"/>
+            <Icon name="ios-send-outline" size={40} color="gray"/>
           </TouchableOpacity>
         </View>
       </View>
@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: 'white',
     paddingHorizontal: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   input: {
     height: 50,
