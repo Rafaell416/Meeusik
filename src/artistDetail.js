@@ -2,14 +2,21 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
-  TextInput
+  TextInput,
+  TouchableOpacity
 } from 'react-native'
 
 
 import ArtistBox from './artistBox'
 import { getArtists } from './api-client'
+import Icon from 'react-native-vector-icons/Ionicons'
+
 
 export default class ArtistDetail extends Component {
+
+  handleSend = () => {
+    console.warn('Sent')
+  }
 
   render() {
     const artist = this.props.artist
@@ -23,6 +30,9 @@ export default class ArtistDetail extends Component {
           placeholder="Type here to comment!"
           onChangeText={(text) => this.setState({text})}
           />
+          <TouchableOpacity onPress={this.handleSend}>
+            <Icon name="ios-send-outline" size={50} color="gray"/>
+          </TouchableOpacity>
         </View>
       </View>
     )
@@ -33,7 +43,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'lightgray',
-    paddingTop: 70
+    paddingTop: 70,
   },
   inputContainer: {
     position: 'absolute',
@@ -42,9 +52,11 @@ const styles = StyleSheet.create({
     left: 0,
     height: 50,
     backgroundColor: 'white',
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    flexDirection: 'row'
   },
   input: {
-    height: 50
+    height: 50,
+    flex: 1,
   }
 })
