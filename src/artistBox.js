@@ -8,7 +8,10 @@ import {
 } from 'react-native'
 
 import Icon from 'react-native-vector-icons/Ionicons'
-import { firebaseDatabase } from '../config'
+import { 
+  firebaseDatabase,
+  firebaseAuth 
+} from '../config'
 
 export default class ArtistBox extends Component {
 
@@ -17,9 +20,38 @@ export default class ArtistBox extends Component {
   }
 
   handlePress = () => {
-    this.setState({
-      liked: !this.state.liked
-    })
+    this.setState({ liked: !this.state.liked })
+    this.toggleLike(!this.state.liked)
+  }
+
+  getArtistRef = () => {
+    const {id} = this.props.artist
+    return firebaseDatabase.ref(`artist/ ${id}`)
+  }
+
+  toggleLike = (liked) => {
+    const { uid } = firebaseAuth.currentUser
+
+     this.getArtistRef().transaction((artist) => {
+          if (artist) {
+            if (artist.likes && artist.likes[uid]) {
+              artist.likeCount--
+              artist.likes[uid] = null
+            } else {
+              artist.likeCount++
+              if (!artist.likes) {
+                artist.likes = {}
+              }
+              artist.likes[uid] = true
+            }
+          }
+          return artist || {
+            likeCount: 1,
+            likes: {
+              [uid]: true
+            }
+          }
+      })
   }
 
   render() {
