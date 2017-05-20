@@ -11,14 +11,16 @@ import FBSDK, {
 } from 'react-native-fbsdk'
 
 import { Actions } from 'react-native-router-flux'
+import config, {
+  firebaseDatabase, 
+  firebaseAuth
+}  from '../config'
 import * as firebase from 'firebase'
-import config from '../config'
+
 
 
 firebase.initializeApp(config.firebaseConfig)
 
-const firebaseAuth = firebase.auth()
-const firebaseDatabase  = firebase.database()
 
 
 
