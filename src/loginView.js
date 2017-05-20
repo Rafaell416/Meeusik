@@ -18,6 +18,7 @@ import config from '../config'
 firebase.initializeApp(config.firebaseConfig)
 
 const firebaseAuth = firebase.auth()
+const firebaseDatabase  = firebase.database()
 
 
 
@@ -56,6 +57,7 @@ export default class LoginView extends Component {
 
   render () {
     return (
+
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Bienvenido a Meeusik
@@ -63,8 +65,10 @@ export default class LoginView extends Component {
          <LoginButton
           readPermissions={['public_profile', 'email']}
           onLoginFinished={this.handleLoginFinished}
-          onLogoutFinished={() => alert("logout.")}/>
+          onLogoutFinished={() => alert("logout.")}
+           />
       </View>
+
     )
   }
 }
