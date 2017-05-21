@@ -15,9 +15,23 @@ import {
   firebaseAuth 
 } from '../config'
 
+import CommentList from './commentList'
 
 
 export default class ArtistDetail extends Component {
+
+  state = {
+    comments: []
+  }
+
+  componentDidMount () {
+    this.getArtistCommentsRef().on('child_added', (data) => {
+      const comment = data.val()
+      this.setState({
+        comments: this.state.comments.concat(comment)
+      })
+    })
+  }
 
   handleSend = () => {
     const { text } = this.state
@@ -35,10 +49,12 @@ export default class ArtistDetail extends Component {
 
   render() {
     const artist = this.props.artist
+    const { comments } = this.state
 
     return (
       <View style={styles.container}>
         <ArtistBox artist={artist} />
+        <CommentList comments={comments}/>
         <View style={styles.inputContainer}>
           <TextInput
           style={styles.input}

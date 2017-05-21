@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   ListView,
-  TouchableOpacity,
 } from 'react-native'
 
-import ArtistBox from './artistBox'
-import { Actions } from 'react-native-router-flux'
+import Comment from './comment'
 
 export default class ComentList extends Component {
   
@@ -34,20 +32,14 @@ export default class ComentList extends Component {
       })
   }
 
-  handlePress(artist) { 
-    Actions.artistDetail({ artist })
-  }
-
   render() {
     return (
       <ListView 
         enableEmptySections= { true }
         dataSource={this.state.dataSource}
-        renderRow={(artist) => {
+        renderRow={(comment) => {
           return(
-            <TouchableOpacity onPress={()=> this.handlePress(artist)}> 
-              <ArtistBox artist={artist} />
-            </TouchableOpacity>
+              <Comment text={comment.text} />
           )
         }}
       />
