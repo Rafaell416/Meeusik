@@ -25,11 +25,17 @@ export default class ArtistDetail extends Component {
   }
 
   componentDidMount () {
-    this.getArtistCommentsRef().on('child_added', (data) => {
-      const comment = data.val()
-      this.setState({
-        comments: this.state.comments.concat(comment)
-      })
+    this.getArtistCommentsRef().on('child_added', this.addComment)
+  }
+
+  commponentWillUnmount () {
+    this.getArtistCommentsRef().off('child_added', this.addComment)
+  }
+
+  addComment = (data) => {
+    const comment = data.val()
+    this.setState({
+      comments: this.state.comments.concat(comment)
     })
   }
 
