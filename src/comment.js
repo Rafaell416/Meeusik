@@ -5,4 +5,4 @@ import { Text } from 'react-native'
 	<Text>{props.text}</Text>
 
 export default Comment
-//comment
+
