@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
+  Text,
   TextInput,
   TouchableOpacity
 } from 'react-native'
@@ -10,9 +11,9 @@ import {
 import ArtistBox from './artistBox'
 import { getArtists } from './api-client'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { 
+import {
   firebaseDatabase,
-  firebaseAuth 
+  firebaseAuth
 } from '../config'
 
 import CommentList from './commentList'
@@ -60,6 +61,7 @@ export default class ArtistDetail extends Component {
     return (
       <View style={styles.container}>
         <ArtistBox artist={artist} />
+        <Text style={styles.header}>Comentarios</Text>
         <CommentList comments={comments}/>
         <View style={styles.inputContainer}>
           <TextInput
@@ -96,5 +98,8 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     flex: 1,
+  },
+  header: {
+    
   }
 })
