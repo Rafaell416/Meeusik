@@ -100,6 +100,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    
+    fontSize: 20,
+    paddingHorizontal: 15,
+    marginVertical: 10
   }
 })
