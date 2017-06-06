@@ -45,6 +45,7 @@ export default class ArtistDetail extends Component {
     const artistCommentsRef = this.getArtistCommentsRef()
     let newCommentRef = artistCommentsRef.push()
     newCommentRef.set({ text })
+    this.setState({ text: '' })
   }
 
   getArtistCommentsRef = () => {
@@ -65,6 +66,7 @@ export default class ArtistDetail extends Component {
         <CommentList comments={comments}/>
         <View style={styles.inputContainer}>
           <TextInput
+          value={this.state.text}
           style={styles.input}
           placeholder="Type here to comment!"
           onChangeText={this.handleChangeText}
@@ -85,10 +87,6 @@ const styles = StyleSheet.create({
     paddingTop: 70,
   },
   inputContainer: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    left: 0,
     height: 50,
     backgroundColor: 'white',
     paddingHorizontal: 10,
