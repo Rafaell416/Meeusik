@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
+  ActivityIndicator
 } from 'react-native'
 
 import ArtistList from './artistList'
@@ -12,7 +13,7 @@ import { getArtists } from './api-client'
 export default class HomeView extends Component {
 
   state = {
-    artists: []
+    artists: null
   }
 
   componentDidMount () {
@@ -24,11 +25,21 @@ export default class HomeView extends Component {
   render () {
     const artists = this.state.artists
 
-    return (
-      <View style={styles.container}>
-        <ArtistList artists={artists} />
-      </View>
-    )
+    if (!artists) {
+        return (
+        <View style={styles.container}>
+          <ActivityIndicator size='large' />
+        </View>
+      )
+    }else{
+        return (
+        <View style={styles.container}>
+          <ArtistList artists={artists} />
+        </View>
+      )
+    }
+
+    
   }
 }
 

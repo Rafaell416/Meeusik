@@ -20,7 +20,7 @@ class Meeusik extends React.Component {
       <Scene key="login" component={LoginView} hideNavBar={true}/>
       <Scene key="root">
         <Scene key="home" component={HomeView} hideNavBar={true}/>
-        <Scene key="artistDetail" component={ArtistDetail} title='Comments' hideNavBar={false}/>
+        <Scene key="artistDetail" component={ArtistDetail} title='Comments List' hideNavBar={false}/>
       </Scene>
     </Router>
   }
