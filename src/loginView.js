@@ -56,6 +56,7 @@ export default class LoginView extends Component {
     return (
 
       <Image source={require('../assets/bg.jpg')} style={styles.container}>
+      <Image source={require('../assets/logo.png')} style={styles.logo}/>
         <Text style={styles.welcome}>
           Welcome to Meeusik
         </Text>
@@ -85,5 +86,10 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     backgroundColor: 'transparent',
     color: 'white'
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    margin: 20
   }
 })
