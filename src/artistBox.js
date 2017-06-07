@@ -17,7 +17,8 @@ export default class ArtistBox extends Component {
 
   state = {
     liked: false,
-    likeCount: 0
+    likeCount: 0,
+    commentCount: 0
   }
 
   componentWillMount () {
@@ -27,7 +28,7 @@ export default class ArtistBox extends Component {
       if (artist) {
         this.setState({
           likeCount: artist.likeCount,
-          liked: artist.likes && artist.likes[uid]
+          liked: artist.likes && artist.likes[uid],
         })
       }
     })
@@ -68,12 +69,13 @@ export default class ArtistBox extends Component {
   }
 
   render() {
-    const {image, name, likes, comments} = this.props.artist
+    const {image, name, likes} = this.props.artist
     const likeIcon = this.state.liked ? 
       <Icon name="ios-heart" size={30} color="#e74c3c"/> :
       <Icon name="ios-heart-outline" size={30} color="gray"/>
 
     const { likeCount } = this.state
+    const { commentCount } = this.state
 
     return (
         <View style={styles.artistBox}>
@@ -89,7 +91,7 @@ export default class ArtistBox extends Component {
                   </View>
                    <View style={styles.iconContainer}>
                     <Icon name="ios-text-outline" size={30} color="gray" />
-                    <Text style={styles.count}>{comments}</Text>
+                    <Text style={styles.count}>{commentCount}</Text>
                   </View>
                 </View>
             </View>

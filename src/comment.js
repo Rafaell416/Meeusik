@@ -6,12 +6,15 @@ import {
   Image
 } from 'react-native'
 
+const defaultAvatar = 'https://www.shareicon.net/data/512x512/2016/07/08/117367_logo_512x512.png'
 
  const Comment = (props) =>
   <View style={styles.comment}>
-     <Image source={{ uri: props.avatar }}
-            style={styles.avatar} 
-     />
+  {
+    props.avatar ?
+      <Image source={{ uri: props.avatar }} style={styles.avatar} /> 
+    : <Image source={{ uri: defaultAvatar }} style={styles.avatar} />
+  }
 	   <Text style={styles.text}>{props.text}</Text>
   </View>
 
