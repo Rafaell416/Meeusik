@@ -42,9 +42,14 @@ export default class ArtistDetail extends Component {
 
   handleSend = () => {
     const { text } = this.state
+    const { uid, photoURL } = firebaseAuth.currentUser
     const artistCommentsRef = this.getArtistCommentsRef()
     let newCommentRef = artistCommentsRef.push()
-    newCommentRef.set({ text })
+    newCommentRef.set({
+      text,
+      photoURL,
+      uid
+    })
     this.setState({ text: '' })
   }
 

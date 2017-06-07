@@ -7,7 +7,7 @@ import {
 import Comment from './comment'
 
 export default class ComentList extends Component {
-  
+
   constructor(props) {
     super(props)
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
@@ -22,7 +22,7 @@ export default class ComentList extends Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.comments !== this.props.comments) {
-      this.updateDataSource(newProps.comments)   
+      this.updateDataSource(newProps.comments)
     }
   }
 
@@ -34,12 +34,12 @@ export default class ComentList extends Component {
 
   render() {
     return (
-      <ListView 
+      <ListView
         enableEmptySections= { true }
         dataSource={this.state.dataSource}
         renderRow={(comment) => {
           return(
-              <Comment text={comment.text} />
+            <Comment text={comment.text} avatar={comment.photoURL} />
           )
         }}
       />
