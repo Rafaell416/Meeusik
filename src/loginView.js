@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
   Text,
+  Image
 } from 'react-native'
 
 import FBSDK, {
@@ -54,7 +55,7 @@ export default class LoginView extends Component {
   render () {
     return (
 
-      <View style={styles.container}>
+      <Image source={require('../assets/bg.jpg')} style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to Meeusik
         </Text>
@@ -63,7 +64,7 @@ export default class LoginView extends Component {
           onLoginFinished={this.handleLoginFinished}
           onLogoutFinished={() => alert("logout.")}
            />
-      </View>
+      </Image>
 
     )
   }
@@ -72,6 +73,8 @@ export default class LoginView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: null,
+    height: null, 
     backgroundColor: 'lightgray',
     justifyContent: 'center',
     alignItems: 'center'
@@ -80,5 +83,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 10,
     fontWeight: '600',
+    backgroundColor: 'transparent',
+    color: 'white'
   }
 })

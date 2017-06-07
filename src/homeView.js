@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
-  ActivityIndicator
+  ActivityIndicator,
+  Platform 
 } from 'react-native'
 
 import ArtistList from './artistList'
@@ -47,6 +48,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'lightgray',
-    paddingTop: 50
+    paddingTop: Platform.select({
+      ios: 16,
+      android: 0
+    })
   }
 })
