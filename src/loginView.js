@@ -56,7 +56,7 @@ export default class LoginView extends Component {
     return (
 
       <Image source={require('../assets/bg.jpg')} style={styles.container}>
-      <Image source={require('../assets/ .png')} style={styles.logo}/>
+      <Image source={require('../assets/logo.png')} style={styles.logo}/>
         <Text style={styles.welcome}>
           Welcome to Meeusik
         </Text>
