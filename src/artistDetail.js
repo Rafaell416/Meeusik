@@ -67,7 +67,7 @@ export default class ArtistDetail extends Component {
     return (
       <View style={styles.container}>
         <ArtistBox artist={artist} />
-        <Text style={styles.header}>Comentarios</Text>
+        <Text style={styles.header}>Comments List</Text>
         <CommentList comments={comments}/>
         <View style={styles.inputContainer}>
           <TextInput

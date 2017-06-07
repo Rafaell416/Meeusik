@@ -56,7 +56,7 @@ export default class LoginView extends Component {
 
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Bienvenido a Meeusik
+          Welcome to Meeusik
         </Text>
          <LoginButton
           readPermissions={['public_profile', 'email']}

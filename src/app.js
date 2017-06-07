@@ -16,14 +16,11 @@ import { getArtists } from './api-client'
 
 class Meeusik extends React.Component {
   render() {
-
-    const isAndroid = Platform.OS === 'android'
-
     return <Router>
       <Scene key="login" component={LoginView} hideNavBar={true}/>
       <Scene key="root">
         <Scene key="home" component={HomeView} hideNavBar={true}/>
-        <Scene key="artistDetail" component={ArtistDetail} hideNavBar={isAndroid}/>
+        <Scene key="artistDetail" component={ArtistDetail} title='Comments' hideNavBar={false}/>
       </Scene>
     </Router>
   }
